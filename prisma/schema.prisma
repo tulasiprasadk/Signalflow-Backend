@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String       @id @default(cuid())
+  email       String       @unique
+  password    String
+  createdAt   DateTime     @default(now())
+  memberships Membership[]
+}
+
+model Organization {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  category    String
+  location    String
+  website     String
+  createdAt   DateTime @default(now())
+
+  memberships    Membership[]
+  socialAccounts SocialAccount[]
+  campaigns      Campaign[]
+  subscriptions  Subscription[] // ✅ FIXED
+}
+
+model Membership {
+  id             String @id @default(cuid())
+  role           String
+  userId         String
+  organizationId String
+
+  user         User         @relation(fields: [userId], references: [id])
+  organization Organization @relation(fields: [organizationId], references: [id])
+}
+
+model SocialAccount {
+  id             String    @id @default(cuid())
+  provider       String
+  accessToken    String
+  refreshToken   String?
+  expiresAt      DateTime?
+  organizationId String
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+}
+
+model Campaign {
+  id             String @id @default(cuid())
+  name           String
+  config         Json
+  status         String @default("draft")
+  organizationId String
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+  assets       Asset[]
+}
+
+model Asset {
+  id         String @id @default(cuid())
+  type       String
+  payload    Json
+  status     String @default("pending")
+  campaignId String
+
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+}
+
+model Schedule {
+  id          String   @id @default(cuid())
+  assetId     String
+  scheduledAt DateTime
+}
+
+model Metric {
+  id          String   @id @default(cuid())
+  assetId     String
+  date        DateTime
+  impressions Int?
+  likes       Int?
+  comments    Int?
+  shares      Int?
+}
+
+model Report {
+  id          String   @id @default(cuid())
+  campaignId  String
+  type        String
+  fileUrl     String?
+  generatedAt DateTime @default(now())
+}
+
+model Plan {
+  id        String   @id @default(cuid())
+  name      String
+  duration  Int // days: 15 / 30 / 90
+  price     Int // INR for now
+  createdAt DateTime @default(now())
+
+  subscriptions Subscription[]
+}
+
+model Subscription {
+  id             String   @id @default(cuid())
+  organizationId String
+  planId         String
+  startDate      DateTime
+  endDate        DateTime
+  status         String   @default("active")
+
+  organization Organization @relation(fields: [organizationId], references: [id])
+  plan         Plan         @relation(fields: [planId], references: [id])
+}

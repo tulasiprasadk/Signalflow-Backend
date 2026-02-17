@@ -1,0 +1,251 @@
+{"model":"llama2:latest","created_at":"2026-01-03T18:25:58.3696067Z","response":"\n","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:27.5065914Z","response":"1","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:28.9894132Z","response":".","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:31.8038363Z","response":" Use","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:31.8038363Z","response":" Inst","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:31.8038363Z","response":"agram","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:31.9392643Z","response":" St","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:31.9412762Z","response":"ories","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:31.9412762Z","response":" and","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:31.9412762Z","response":" Re","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:31.9412762Z","response":"els","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:33.6072922Z","response":" to","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:33.6072922Z","response":" show","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:33.6072922Z","response":"case","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:33.6072922Z","response":" your","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:35.3208913Z","response":" coffee","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:35.3345399Z","response":" shop","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:35.3388616Z","response":"'","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:38.0826984Z","response":"s","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:38.0836975Z","response":" unique","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:38.0852056Z","response":" atmosphere","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:38.0852056Z","response":" and","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:38.2518057Z","response":" offer","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:38.8300077Z","response":"ings","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:39.2299935Z","response":":","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:39.675307Z","response":" C","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:40.2838969Z","response":"off","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:40.8190652Z","response":"ee","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:41.5055257Z","response":" sh","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:42.0640858Z","response":"ops","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:42.5348993Z","response":" can","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:42.9659879Z","response":" use","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:43.4277977Z","response":" Inst","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:43.8867579Z","response":"agram","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:44.4428979Z","response":" St","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:45.0551046Z","response":"ories","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:45.6956972Z","response":" and","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:46.1020128Z","response":" Re","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:46.5602974Z","response":"els","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:47.0203743Z","response":" to","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:47.613623Z","response":" give","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:48.1185648Z","response":" their","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:48.7876527Z","response":" follow","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:49.2340385Z","response":"ers","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:49.9393047Z","response":" a","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:50.4664021Z","response":" behind","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:51.0067016Z","response":"-","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:51.4518036Z","response":"the","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:52.1539527Z","response":"-","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:52.8014314Z","response":"sc","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:53.3241839Z","response":"enes","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:54.04755Z","response":" look","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:54.7894606Z","response":" at","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:55.3394902Z","response":" the","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:56.203601Z","response":" shop","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:56.9274727Z","response":",","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:57.958755Z","response":" such","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:58.514497Z","response":" as","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:59.0417635Z","response":" showing","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:26:59.7624546Z","response":" the","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:00.2654399Z","response":" ro","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:01.0744073Z","response":"ast","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:01.7326292Z","response":"ing","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:02.8575261Z","response":" process","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:03.6483242Z","response":",","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:04.589209Z","response":" highlight","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:05.0445282Z","response":"ing","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:05.4016466Z","response":" the","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:05.7963428Z","response":" different","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:06.2638124Z","response":" bre","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:06.7802473Z","response":"wing","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:07.2388706Z","response":" methods","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:07.8502171Z","response":",","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:08.3777139Z","response":" or","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:08.9842987Z","response":" sharing","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:09.6409076Z","response":" customer","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:10.4050485Z","response":" test","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:12.5377178Z","response":"imon","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:13.5956894Z","response":"ial","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:14.0388205Z","response":"s","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:14.5390138Z","response":".","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:15.0905457Z","response":" This","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:17.2806369Z","response":" can","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:18.2808194Z","response":" help","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:18.6762157Z","response":" create","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:19.0747239Z","response":" a","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:19.4683816Z","response":" strong","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:19.8875861Z","response":" brand","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:20.4041732Z","response":" identity","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:20.8268715Z","response":" and","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:21.2480696Z","response":" make","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:21.8595881Z","response":" customers","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:22.3037804Z","response":" feel","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:22.9268354Z","response":" like","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:23.3989519Z","response":" they","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:23.9649914Z","response":"'","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:24.5933123Z","response":"re","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:25.0455245Z","response":" part","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:25.7604644Z","response":" of","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:26.2903456Z","response":" the","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:26.8560653Z","response":" coffee","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:27.1709538Z","response":" shop","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:27.5679562Z","response":"'","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:28.043928Z","response":"s","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:28.4630243Z","response":" community","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:28.8770331Z","response":".","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:29.3580368Z","response":"\n","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:29.7596112Z","response":"2","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:30.1807268Z","response":".","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:30.5838044Z","response":" Le","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:31.1287103Z","response":"verage","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:31.5533237Z","response":" Facebook","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:31.969738Z","response":" and","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:32.5759763Z","response":" Inst","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:33.045526Z","response":"agram","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:33.660212Z","response":" for","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:34.2368216Z","response":" target","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:35.1800103Z","response":"ed","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:36.0101847Z","response":" advert","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:36.4941609Z","response":"ising","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:37.2105423Z","response":":","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:37.9962036Z","response":" C","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:38.815004Z","response":"off","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:39.9109348Z","response":"ee","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:41.1906452Z","response":" sh","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:42.1598952Z","response":"ops","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:43.7187034Z","response":" can","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:44.7812943Z","response":" use","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:44.7812943Z","response":" Facebook","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:45.2283166Z","response":" and","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:45.3747986Z","response":" Inst","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:45.7812262Z","response":"agram","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:46.198764Z","response":"'","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:46.6436331Z","response":"s","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:47.0767926Z","response":" target","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:47.6597708Z","response":"ed","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:48.1906278Z","response":" advert","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:48.844417Z","response":"ising","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:49.3133009Z","response":" options","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:49.7610954Z","response":" to","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:50.3934535Z","response":" reach","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:50.8576987Z","response":" their","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:51.2551704Z","response":" desired","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:51.6282786Z","response":" audience","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:52.1546755Z","response":",","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:52.5925463Z","response":" such","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:53.0456906Z","response":" as","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:53.9345889Z","response":" running","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:54.5471567Z","response":" ad","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:54.9773574Z","response":"s","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:55.6219713Z","response":" specifically","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:56.0658282Z","response":" in","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:56.5818462Z","response":" areas","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:57.0557139Z","response":" with","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:57.4679367Z","response":" high","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:57.923046Z","response":" foot","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:58.3762814Z","response":" traffic","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:58.7596641Z","response":" or","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:59.3413613Z","response":" target","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:27:59.7747407Z","response":"ing","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:00.2182614Z","response":" customers","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:00.8641538Z","response":" based","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:01.3630029Z","response":" on","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:01.7874287Z","response":" dem","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:02.1974125Z","response":"ograph","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:02.6164034Z","response":"ics","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:03.0308902Z","response":" like","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:03.4525658Z","response":" age","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:03.7906632Z","response":",","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:04.237773Z","response":" gender","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:04.6647449Z","response":",","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:05.1969574Z","response":" and","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:05.7871857Z","response":" interests","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:06.1984361Z","response":".","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:06.5463843Z","response":" This","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:06.9332307Z","response":" can","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:07.3823803Z","response":" help","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:07.8059804Z","response":" increase","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:08.262292Z","response":" brand","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:08.621231Z","response":" aw","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:09.05843Z","response":"aren","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:09.6271939Z","response":"ess","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:10.1463401Z","response":" and","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:10.574661Z","response":" drive","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:11.0181139Z","response":" sales","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:11.7757722Z","response":".","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:12.4878047Z","response":"\n","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:12.9131678Z","response":"3","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:13.3235502Z","response":".","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:13.676391Z","response":" Util","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:14.2332847Z","response":"ize","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:14.7047735Z","response":" Twitter","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:15.1297513Z","response":" for","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:15.5569136Z","response":" real","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:15.9847641Z","response":"-","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:16.4321834Z","response":"time","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:16.8777545Z","response":" eng","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:17.3809281Z","response":"agement","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:17.8735581Z","response":":","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:18.3414722Z","response":" C","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:18.6729066Z","response":"off","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:19.1349535Z","response":"ee","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:19.7627886Z","response":" sh","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:20.2082166Z","response":"ops","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:20.8650312Z","response":" can","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:21.4036816Z","response":" use","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:21.9963114Z","response":" Twitter","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:22.6614643Z","response":" to","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:23.111398Z","response":" eng","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:23.7446505Z","response":"age","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:24.1137388Z","response":" with","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:24.5368894Z","response":" their","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:24.9776588Z","response":" follow","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:25.4437742Z","response":"ers","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:25.8862421Z","response":" in","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:26.3672338Z","response":" real","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:26.9759479Z","response":"-","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:27.3505056Z","response":"time","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:27.650552Z","response":",","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:28.0178348Z","response":" such","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:28.32263Z","response":" as","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:28.6531218Z","response":" respond","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:29.1551398Z","response":"ing","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:29.6273591Z","response":" to","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:30.0643288Z","response":" customer","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:30.7717588Z","response":" queries","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:31.2632275Z","response":" or","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:31.6222619Z","response":" sharing","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:31.9995201Z","response":" updates","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:32.5369948Z","response":" about","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:32.9881018Z","response":" prom","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:33.3860285Z","response":"ot","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:34.3351112Z","response":"ions","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:36.5651872Z","response":" or","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:37.1457644Z","response":" events","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:37.7512901Z","response":".","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:38.228681Z","response":" This","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:38.6803895Z","response":" can","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:39.2108943Z","response":" help","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:39.8536594Z","response":" build","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:40.3168992Z","response":" a","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:41.0954913Z","response":" strong","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:41.5349713Z","response":" customer","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:41.9911907Z","response":" relationship","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:42.4399794Z","response":" and","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:42.8641149Z","response":" create","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:43.3095739Z","response":" a","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:43.6683071Z","response":" loyal","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:44.1868106Z","response":" following","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:44.6296478Z","response":".","done":false}
+{"model":"llama2:latest","created_at":"2026-01-03T18:28:45.2278996Z","response":"","done":true,"done_reason":"stop","context":[518,25580,29962,3532,14816,29903,29958,5299,829,14816,29903,6778,13,13,1184,29894,680,29871,29941,5264,5745,1663,5861,363,26935,18296,518,29914,25580,29962,13,13,29896,29889,4803,2799,14442,624,3842,322,830,1379,304,1510,4878,596,26935,18296,29915,29879,5412,25005,322,5957,886,29901,315,2696,3905,528,3554,508,671,2799,14442,624,3842,322,830,1379,304,2367,1009,1101,414,263,5742,29899,1552,29899,1557,25487,1106,472,278,18296,29892,1316,408,6445,278,696,579,292,1889,29892,12141,292,278,1422,2078,16958,3519,29892,470,19383,11962,1243,20170,616,29879,29889,910,508,1371,1653,263,4549,14982,10110,322,1207,20330,4459,763,896,29915,276,760,310,278,26935,18296,29915,29879,7881,29889,13,29906,29889,951,19698,13327,322,2799,14442,363,3646,287,18811,5921,29901,315,2696,3905,528,3554,508,671,13327,322,2799,14442,29915,29879,3646,287,18811,5921,3987,304,6159,1009,7429,20026,29892,1316,408,2734,594,29879,10816,297,10161,411,1880,3661,12469,470,3646,292,20330,2729,373,1261,1946,1199,763,5046,29892,23346,29892,322,20017,29889,910,508,1371,7910,14982,3773,8326,404,322,7899,16538,29889,13,29941,29889,22310,675,20147,363,1855,29899,2230,3033,5049,29901,315,2696,3905,528,3554,508,671,20147,304,3033,482,411,1009,1101,414,297,1855,29899,2230,29892,1316,408,10049,292,304,11962,9365,470,19383,11217,1048,2504,327,1080,470,4959,29889,910,508,1371,2048,263,4549,11962,9443,322,1653,263,28108,1494,29889],"total_duration":185750768800,"load_duration":3273934000,"prompt_eval_count":32,"prompt_eval_duration":15437079500,"eval_count":251,"eval_duration":165782174500}

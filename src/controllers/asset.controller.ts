@@ -1,0 +1,1 @@
+// Content asset controller (stub)
