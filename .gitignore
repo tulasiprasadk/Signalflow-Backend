@@ -1,9 +1,6 @@
-node_modules
-dist
-dist-ssr
 .env
+node_modules
 uploads
 .DS_Store
-uploads/*
 .vercel
 .env*.local
