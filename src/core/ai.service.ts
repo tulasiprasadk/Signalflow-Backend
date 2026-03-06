@@ -17,7 +17,8 @@ export class AiService {
     if (!this.llmUrl || !this.llmKey) {
       if (!this.hfApiKey) {
         console.error('❌ No LLM_API_URL/LLM_API_KEY or HUGGINGFACE_API_KEY configured');
-        throw new Error('LLM provider is not configured');
+        // Do not crash the whole app when AI env vars are missing.
+        this.hfApiKey = undefined;
       } else {
         console.warn('LLM_API not configured, falling back to Hugging Face');
       }

@@ -17,9 +17,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 *.tmp
+tmp_*.json
 
 # IDE/OS
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
+.vercel

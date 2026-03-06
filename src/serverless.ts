@@ -20,9 +20,17 @@ async function createServer() {
 
   const app = await NestFactory.create(AppModule, new ExpressAdapter(expressApp));
 
-  // CORS: allow configured origin or localhost dev
-  const origin = process.env.CORS_ORIGIN || process.env.NEXT_PUBLIC_FRONTEND_URL || 'http://localhost:9000';
-  app.enableCors({ origin, credentials: true });
+  const origins = (
+    process.env.CORS_ORIGINS ||
+    process.env.CORS_ORIGIN ||
+    process.env.FRONTEND_URL ||
+    process.env.NEXT_PUBLIC_FRONTEND_URL ||
+    'http://localhost:6002'
+  )
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean);
+  app.enableCors({ origin: origins, credentials: true });
 
   app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true, transform: true }));

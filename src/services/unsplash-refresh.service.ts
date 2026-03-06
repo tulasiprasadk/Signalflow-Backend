@@ -10,6 +10,11 @@ export class UnsplashRefreshService implements OnModuleInit {
   constructor(private social: SocialService, private prisma: PrismaService) {}
 
   async onModuleInit() {
+    if (process.env.VERCEL) {
+      this.logger.log('UnsplashRefreshService disabled in Vercel serverless runtime');
+      return;
+    }
+
     // Run check every hour and refresh all provider tokens where possible
     this.logger.log('UnsplashRefreshService starting - will check every hour for all providers');
     await this.checkAndRefresh();
