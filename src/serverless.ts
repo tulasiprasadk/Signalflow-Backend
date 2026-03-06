@@ -7,6 +7,10 @@ import { join } from 'path';
 
 let cachedApp: any = null;
 
+function isAllowedPreviewOrigin(origin: string) {
+  return /^https:\/\/signalflow-frontend(?:-[a-z0-9-]+)?\.vercel\.app$/i.test(origin);
+}
+
 async function createServer() {
   const expressApp = express();
 
@@ -16,7 +20,7 @@ async function createServer() {
 
   const app = await NestFactory.create(AppModule, new ExpressAdapter(expressApp));
 
-  const origins = (
+  const configuredOrigins = (
     process.env.CORS_ORIGINS ||
     process.env.CORS_ORIGIN ||
     process.env.FRONTEND_URL ||
@@ -27,7 +31,22 @@ async function createServer() {
     .map((value) => value.trim())
     .filter(Boolean);
 
-  app.enableCors({ origin: origins, credentials: true });
+  app.enableCors({
+    origin: (origin, callback) => {
+      if (!origin) {
+        callback(null, true);
+        return;
+      }
+
+      if (configuredOrigins.includes(origin) || isAllowedPreviewOrigin(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error(`Origin not allowed by CORS: ${origin}`), false);
+    },
+    credentials: true,
+  });
   app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true, transform: true }));
 
