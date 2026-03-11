@@ -60,7 +60,7 @@ export class SocialController {
 		const frontend = this.config.get<string>('FRONTEND_URL') || 'http://localhost:6002';
 
 		if (!code) {
-			return res.redirect(`${frontend}/?connected=facebook&success=0`);
+			return res.redirect(`${frontend}/?connected=facebook&success=0&reason=${encodeURIComponent('Missing authorization code from Facebook callback')}`);
 		}
 
 		try {
@@ -77,7 +77,8 @@ export class SocialController {
 			return res.redirect(`${frontend}/?connected=facebook&success=1`);
 		} catch (e) {
 			this.logger.error('Error handling Facebook callback', e as any);
-			return res.redirect(`${frontend}/?connected=facebook&success=0`);
+			const reason = encodeURIComponent(String((e as any)?.message || e || 'Facebook callback failed'));
+			return res.redirect(`${frontend}/?connected=facebook&success=0&reason=${reason}`);
 		}
 	}
 
