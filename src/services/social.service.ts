@@ -78,6 +78,24 @@ export class SocialService {
 		return this.memoryAccounts.find((acc) => acc.provider === provider) || null;
 	}
 
+	private async resolveOrganizationId(organizationId?: string | null) {
+		if (!this.isDbAvailable()) return organizationId || null;
+
+		if (organizationId) {
+			const existing = await this.prisma.organization.findUnique({ where: { id: organizationId } });
+			if (existing) return existing.id;
+		}
+
+		let org = await this.prisma.organization.findFirst();
+		if (!org) {
+			org = await this.prisma.organization.create({
+				data: { name: 'Local Organization', description: '', category: 'general', location: '', website: '' },
+			});
+		}
+
+		return org.id;
+	}
+
 	async getFacebookOAuthUrl(state: string) {
 		const clientId = this.config.get<string>('FACEBOOK_CLIENT_ID');
 		const redirect =
@@ -335,7 +353,7 @@ export class SocialService {
 		return { token: tokenJson, user: userJson };
 	}
 
-	async persistTwitterAccount(userJson: any, token: any) {
+	async persistTwitterAccount(userJson: any, token: any, organizationId?: string | null) {
 		const user = userJson?.data;
 		const accessToken = token?.access_token || token?.accessToken || null;
 		const refreshToken = token?.refresh_token || token?.refreshToken || null;
@@ -353,12 +371,7 @@ export class SocialService {
 			return this.upsertMemoryAccount(providerKey, accessToken) || this.upsertMemoryAccount(legacyKey, accessToken);
 		}
 
-		let org = await this.prisma.organization.findFirst();
-		if (!org) {
-			org = await this.prisma.organization.create({
-				data: { name: 'Local Organization', description: '', category: 'general', location: '', website: '' },
-			});
-		}
+		const targetOrganizationId = await this.resolveOrganizationId(organizationId);
 
 		const existing = await this.prisma.socialAccount.findFirst({
 			where: user?.id
@@ -373,6 +386,7 @@ export class SocialService {
 					refreshToken: this.encryptToken(refreshToken) || refreshToken,
 					expiresAt,
 					provider: providerKey,
+					organizationId: targetOrganizationId || existing.organizationId,
 				},
 			});
 		}
@@ -383,12 +397,12 @@ export class SocialService {
 				accessToken: this.encryptToken(accessToken) || accessToken,
 				refreshToken: this.encryptToken(refreshToken) || refreshToken,
 				expiresAt,
-				organizationId: org.id,
+				organizationId: targetOrganizationId!,
 			},
 		});
 	}
 
-	async persistLinkedInAccount(profileJson: any, accessToken: string) {
+	async persistLinkedInAccount(profileJson: any, accessToken: string, organizationId?: string | null) {
 		const memberId = profileJson?.id || profileJson?.sub;
 		if (!memberId || !accessToken) return null;
 
@@ -397,20 +411,18 @@ export class SocialService {
 			return this.upsertMemoryAccount(providerKey, accessToken);
 		}
 
-		let org = await this.prisma.organization.findFirst();
-		if (!org) {
-			org = await this.prisma.organization.create({
-				data: { name: 'Local Organization', description: '', category: 'general', location: '', website: '' },
-			});
-		}
+		const targetOrganizationId = await this.resolveOrganizationId(organizationId);
 
 		const existing = await this.prisma.socialAccount.findFirst({ where: { provider: providerKey } });
 		if (existing) {
-			return this.prisma.socialAccount.update({ where: { id: existing.id }, data: { accessToken } });
+			return this.prisma.socialAccount.update({
+				where: { id: existing.id },
+				data: { accessToken, organizationId: targetOrganizationId || existing.organizationId },
+			});
 		}
 
 		return this.prisma.socialAccount.create({
-			data: { provider: providerKey, accessToken, organizationId: org.id },
+			data: { provider: providerKey, accessToken, organizationId: targetOrganizationId! },
 		});
 	}
 
@@ -439,7 +451,7 @@ export class SocialService {
 		return orgIds;
 	}
 
-	async persistLinkedInOrganizations(orgIds: string[], accessToken: string) {
+	async persistLinkedInOrganizations(orgIds: string[], accessToken: string, organizationId?: string | null) {
 		if (!orgIds || orgIds.length === 0 || !accessToken) return [];
 
 		if (!this.isDbAvailable()) {
@@ -448,12 +460,7 @@ export class SocialService {
 				.filter(Boolean) as any[];
 		}
 
-		let org = await this.prisma.organization.findFirst();
-		if (!org) {
-			org = await this.prisma.organization.create({
-				data: { name: 'Local Organization', description: '', category: 'general', location: '', website: '' },
-			});
-		}
+		const targetOrganizationId = await this.resolveOrganizationId(organizationId);
 
 		const saved: any[] = [];
 		for (const orgId of orgIds) {
@@ -462,14 +469,14 @@ export class SocialService {
 			if (existing) {
 				const updated = await this.prisma.socialAccount.update({
 					where: { id: existing.id },
-					data: { accessToken },
+					data: { accessToken, organizationId: targetOrganizationId || existing.organizationId },
 				});
 				saved.push(updated);
 				continue;
 			}
 
 			const created = await this.prisma.socialAccount.create({
-				data: { provider: providerKey, accessToken, organizationId: org.id },
+				data: { provider: providerKey, accessToken, organizationId: targetOrganizationId! },
 			});
 			saved.push(created);
 		}
@@ -478,7 +485,7 @@ export class SocialService {
 	}
 
 	/** Persist fetched Facebook pages as SocialAccount entries. Creates a fallback Organization if none exists. */
-	async persistFacebookPages(accountsJson: any) {
+	async persistFacebookPages(accountsJson: any, organizationId?: string | null) {
 		if (!accountsJson || !accountsJson.data) return [];
 
 		if (!this.isDbAvailable()) {
@@ -493,11 +500,7 @@ export class SocialService {
 			return saved;
 		}
 
-		// Find or create a fallback organization
-		let org = await this.prisma.organization.findFirst();
-		if (!org) {
-			org = await this.prisma.organization.create({ data: { name: 'Local Organization', description: '', category: 'general', location: '', website: '' } });
-		}
+		const targetOrganizationId = await this.resolveOrganizationId(organizationId);
 
 		const saved: any[] = [];
 		for (const page of accountsJson.data) {
@@ -514,18 +517,24 @@ export class SocialService {
 				create: {
 					provider: pageId,
 					accessToken,
-					organizationId: org.id,
+					organizationId: targetOrganizationId!,
 				},
 				update: {
 					accessToken,
+					organizationId: targetOrganizationId!,
 				},
 			}).catch(async () => {
 				// Fallback: try findFirst then update or create
 				const existing = await this.prisma.socialAccount.findFirst({ where: { provider: pageId } });
 				if (existing) {
-					return this.prisma.socialAccount.update({ where: { id: existing.id }, data: { accessToken } });
+					return this.prisma.socialAccount.update({
+						where: { id: existing.id },
+						data: { accessToken, organizationId: targetOrganizationId || existing.organizationId },
+					});
 				}
-				return this.prisma.socialAccount.create({ data: { provider: pageId, accessToken, organizationId: org.id } });
+				return this.prisma.socialAccount.create({
+					data: { provider: pageId, accessToken, organizationId: targetOrganizationId! },
+				});
 			});
 
 			saved.push(record);
@@ -760,7 +769,7 @@ export class SocialService {
 	}
 
 	/** Sync Instagram business accounts for stored Facebook pages */
-	async syncInstagramAccountsFromFacebookPages() {
+	async syncInstagramAccountsFromFacebookPages(organizationId?: string | null) {
 		const pages = this.isDbAvailable()
 			? await this.prisma.socialAccount.findMany()
 			: this.memoryAccounts;
@@ -768,15 +777,7 @@ export class SocialService {
 
 		if (facebookPages.length === 0) return [];
 
-		let org = null;
-		if (this.isDbAvailable()) {
-			org = await this.prisma.organization.findFirst();
-			if (!org) {
-				org = await this.prisma.organization.create({
-					data: { name: 'Local Organization', description: '', category: 'general', location: '', website: '' },
-				});
-			}
-		}
+		const targetOrganizationId = this.isDbAvailable() ? await this.resolveOrganizationId(organizationId) : null;
 
 		const saved: any[] = [];
 		for (const page of facebookPages) {
@@ -802,12 +803,12 @@ export class SocialService {
 				if (existing) {
 					const updated = await this.prisma.socialAccount.update({
 						where: { id: existing.id },
-						data: { accessToken },
+						data: { accessToken, organizationId: targetOrganizationId || existing.organizationId },
 					});
 					saved.push(updated);
-				} else if (org) {
+				} else if (targetOrganizationId) {
 					const created = await this.prisma.socialAccount.create({
-						data: { provider: providerKey, accessToken, organizationId: org.id },
+						data: { provider: providerKey, accessToken, organizationId: targetOrganizationId },
 					});
 					saved.push(created);
 				}

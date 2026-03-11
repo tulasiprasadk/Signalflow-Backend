@@ -17,47 +17,82 @@ interface UploadImageDto {
 	dataUrl: string;
 }
 
+type OAuthStatePayload = {
+	nonce: string;
+	organizationId?: string;
+};
+
 @Controller('social')
 export class SocialController {
 	private readonly logger = new Logger(SocialController.name);
 
 	constructor(private social: SocialService, private scheduler: SchedulerService, private config: ConfigService, private authService: AuthService) {}
 
+	private encodeState(payload: OAuthStatePayload) {
+		return Buffer.from(JSON.stringify(payload), 'utf8').toString('base64url');
+	}
+
+	private decodeState(state?: string): OAuthStatePayload | null {
+		if (!state) return null;
+		try {
+			const raw = Buffer.from(state, 'base64url').toString('utf8');
+			const parsed = JSON.parse(raw);
+			if (!parsed || typeof parsed !== 'object') return null;
+			return {
+				nonce: String((parsed as any).nonce || ''),
+				organizationId: (parsed as any).organizationId ? String((parsed as any).organizationId) : undefined,
+			};
+		} catch {
+			return { nonce: String(state || '') };
+		}
+	}
+
+	private extractOrganizationId(state?: string) {
+		const direct = this.decodeState(state);
+		if (direct?.organizationId) return direct.organizationId;
+		if (direct?.nonce) {
+			const nested = this.decodeState(direct.nonce);
+			if (nested?.organizationId) return nested.organizationId;
+		}
+		return undefined;
+	}
+
 	@Get('connect/facebook')
-	async connectFacebook(@Res() res) {
-		const state = `state_${Date.now()}`;
+	async connectFacebook(@Query('organizationId') organizationId: string, @Res() res) {
+		const state = this.encodeState({ nonce: `state_${Date.now()}`, organizationId });
 		const url = await this.social.getFacebookOAuthUrl(state);
 		this.logger.log(`Redirecting to Facebook OAuth: ${url}`);
 		return res.redirect(url);
 	}
 
 	@Get('connect/linkedin')
-	async connectLinkedIn(@Res() res) {
-		const state = `state_${Date.now()}`;
+	async connectLinkedIn(@Query('organizationId') organizationId: string, @Res() res) {
+		const state = this.encodeState({ nonce: `state_${Date.now()}`, organizationId });
 		const url = await this.social.getLinkedInOAuthUrl(state);
 		this.logger.log(`Redirecting to LinkedIn OAuth: ${url}`);
 		return res.redirect(url);
 	}
 
 	@Get('connect/twitter')
-	async connectTwitter(@Res() res) {
-		const state = `state_${Date.now()}`;
+	async connectTwitter(@Query('organizationId') organizationId: string, @Res() res) {
+		const state = this.encodeState({ nonce: `state_${Date.now()}`, organizationId });
 		const url = await this.social.getTwitterOAuthUrl(state);
 		this.logger.log(`Redirecting to Twitter OAuth: ${url}`);
 		return res.redirect(url);
 	}
 
 	@Get('connect/instagram')
-	async connectInstagram(@Res() res) {
-		const state = `state_${Date.now()}`;
+	async connectInstagram(@Query('organizationId') organizationId: string, @Res() res) {
+		const state = this.encodeState({ nonce: `state_${Date.now()}`, organizationId });
 		const url = await this.social.getFacebookOAuthUrl(state);
 		this.logger.log(`Redirecting to Instagram OAuth (via Facebook): ${url}`);
 		return res.redirect(url);
 	}
 
 	@Get('callback/facebook')
-	async callbackFacebook(@Query('code') code: string, @Res() res) {
+	async callbackFacebook(@Query('code') code: string, @Query('state') state: string, @Res() res) {
 		const frontend = this.config.get<string>('FRONTEND_URL') || 'http://localhost:6002';
+		const organizationId = this.extractOrganizationId(state);
 
 		if (!code) {
 			return res.redirect(`${frontend}/?connected=facebook&success=0&reason=${encodeURIComponent('Missing authorization code from Facebook callback')}`);
@@ -68,10 +103,10 @@ export class SocialController {
 			this.logger.log('Facebook callback handled; accounts=' + JSON.stringify(result.accounts));
 
 			// Persist fetched pages into DB
-			const saved = await this.social.persistFacebookPages(result.accounts);
+			const saved = await this.social.persistFacebookPages(result.accounts, organizationId);
 			this.logger.log(`Persisted ${saved.length} facebook page(s)`);
 
-			const igSaved = await this.social.syncInstagramAccountsFromFacebookPages();
+			const igSaved = await this.social.syncInstagramAccountsFromFacebookPages(organizationId);
 			this.logger.log(`Persisted ${igSaved.length} instagram account(s)`);
 
 			return res.redirect(`${frontend}/?connected=facebook&success=1`);
@@ -83,9 +118,10 @@ export class SocialController {
 	}
 
 	@Get('callback/linkedin')
-	async callbackLinkedIn(@Query('code') code: string, @Query() query: any, @Res() res) {
+	async callbackLinkedIn(@Query('code') code: string, @Query('state') state: string, @Query() query: any, @Res() res) {
 		const frontend = this.config.get<string>('FRONTEND_URL') || 'http://localhost:6002';
 		this.logger.log(`LinkedIn callback received: ${JSON.stringify(query || {})}`);
+		const organizationId = this.extractOrganizationId(state);
 
 		if (!code) {
 			return res.redirect(`${frontend}/?connected=linkedin&success=0`);
@@ -95,11 +131,11 @@ export class SocialController {
 			const result = await this.social.handleLinkedInCallback(code);
 			this.logger.log('LinkedIn callback handled');
 
-			const saved = await this.social.persistLinkedInAccount(result.profile, result.token?.access_token);
+			const saved = await this.social.persistLinkedInAccount(result.profile, result.token?.access_token, organizationId);
 			this.logger.log(`Persisted LinkedIn account: ${saved ? 'ok' : 'none'}`);
 
 			const orgIds = await this.social.getLinkedInOrganizations(result.token?.access_token);
-			const orgSaved = await this.social.persistLinkedInOrganizations(orgIds, result.token?.access_token);
+			const orgSaved = await this.social.persistLinkedInOrganizations(orgIds, result.token?.access_token, organizationId);
 			this.logger.log(`Persisted LinkedIn org(s): ${orgSaved.length}`);
 
 			const ok = Boolean(saved) || (orgSaved && orgSaved.length > 0);
@@ -114,6 +150,7 @@ export class SocialController {
 	async callbackTwitter(@Query('code') code: string, @Query('state') state: string, @Query('error') oauthError: string, @Query('error_description') errorDescription: string, @Query() query: any, @Res() res) {
 		const frontend = this.config.get<string>('FRONTEND_URL') || 'http://localhost:6002';
 		this.logger.log(`Twitter callback received: ${JSON.stringify(query || {})}`);
+		const organizationId = this.extractOrganizationId(state);
 
 		if (oauthError) {
 			const reason = encodeURIComponent(`${oauthError}${errorDescription ? `: ${errorDescription}` : ''}`);
@@ -126,7 +163,7 @@ export class SocialController {
 
 		try {
 			const result = await this.social.handleTwitterCallback(code, state);
-			const saved = await this.social.persistTwitterAccount(result.user, result.token);
+			const saved = await this.social.persistTwitterAccount(result.user, result.token, organizationId);
 			this.logger.log(`Persisted Twitter account: ${saved ? 'ok' : 'none'}`);
 			return res.redirect(`${frontend}/?connected=twitter&success=${saved ? 1 : 0}`);
 		} catch (e) {
