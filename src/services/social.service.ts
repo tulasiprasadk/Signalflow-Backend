@@ -1211,6 +1211,43 @@ export class SocialService {
 		}
 	}
 
+	async getLinkedInDisplayName(memberId: string, accessToken: string) {
+		try {
+			const userInfoRes = await fetch('https://api.linkedin.com/v2/userinfo', {
+				headers: { Authorization: `Bearer ${accessToken}` },
+			});
+			if (userInfoRes.ok) {
+				const userInfoJson: any = await userInfoRes.json();
+				const fullName = String(userInfoJson?.name || '').trim();
+				if (fullName) return fullName;
+				const email = String(userInfoJson?.email || '').trim();
+				if (email) return email;
+				const given = String(userInfoJson?.given_name || '').trim();
+				const family = String(userInfoJson?.family_name || '').trim();
+				const composed = `${given} ${family}`.trim();
+				if (composed) return composed;
+			}
+		} catch (e) {
+			this.logger.warn(`Could not fetch LinkedIn userinfo for ${memberId}: ${String(e)}`);
+		}
+
+		try {
+			const profileRes = await fetch('https://api.linkedin.com/v2/me', {
+				headers: { Authorization: `Bearer ${accessToken}` },
+			});
+			if (!profileRes.ok) return null;
+			const profileJson: any = await profileRes.json();
+			const localizedFirst = profileJson?.localizedFirstName || '';
+			const localizedLast = profileJson?.localizedLastName || '';
+			const localizedName = `${localizedFirst} ${localizedLast}`.trim();
+			if (localizedName) return localizedName;
+		} catch (e) {
+			this.logger.warn(`Could not fetch LinkedIn profile for ${memberId}: ${String(e)}`);
+		}
+
+		return null;
+	}
+
 	async getAllAccounts() {
 		if (!this.isDbAvailable()) {
 			return this.memoryAccounts;

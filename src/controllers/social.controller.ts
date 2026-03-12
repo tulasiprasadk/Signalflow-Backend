@@ -384,6 +384,14 @@ export class SocialController {
 					};
 				}
 
+				if (rawPlatform === 'linkedin') {
+					const displayName = await this.social.getLinkedInDisplayName(label, p.accessToken);
+					return {
+						...base,
+						label: displayName || label,
+					};
+				}
+
 				return { ...base, label };
 			}),
 		);
