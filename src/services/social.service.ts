@@ -354,7 +354,7 @@ export class SocialService {
 		return { token: tokenJson, user: userJson };
 	}
 
-	async persistTwitterAccount(userJson: any, token: any, organizationId?: string | null) {
+	async persistTwitterAccount(userJson: any, token: any, organizationId?: string | null, accountLabel?: string | null) {
 		const user = userJson?.data;
 		const accessToken = token?.access_token || token?.accessToken || null;
 		const refreshToken = token?.refresh_token || token?.refreshToken || null;
@@ -364,20 +364,22 @@ export class SocialService {
 				: null;
 		if (!accessToken) return null;
 
-		const username = user?.username || user?.name || null;
-		const providerKey = user?.id ? `twitter:${username || user.id}` : 'twitter:default';
-		const legacyKey = user?.id ? `twitter:${user.id}` : 'twitter:default';
+		const normalizedLabel = String(accountLabel || '').trim().replace(/^@+/, '');
+		const username = user?.username || user?.name || normalizedLabel || null;
+		const providerKey = user?.id ? `twitter:${username || user.id}` : `twitter:${username || `account_${Date.now()}`}`;
+		const legacyKey = user?.id ? `twitter:${user.id}` : providerKey;
 
 		if (!this.isDbAvailable()) {
 			return this.upsertMemoryAccount(providerKey, accessToken) || this.upsertMemoryAccount(legacyKey, accessToken);
 		}
 
 		const targetOrganizationId = await this.resolveOrganizationId(organizationId);
+		const candidateProviders = Array.from(
+			new Set([providerKey, legacyKey, normalizedLabel ? `twitter:${normalizedLabel}` : ''].filter(Boolean)),
+		);
 
 		const existing = await this.prisma.socialAccount.findFirst({
-			where: user?.id
-				? { provider: { in: [providerKey, legacyKey] } }
-				: { provider: { startsWith: 'twitter:' } },
+			where: { provider: { in: candidateProviders } },
 		});
 		if (existing) {
 			return this.prisma.socialAccount.update({

@@ -20,6 +20,7 @@ interface UploadImageDto {
 type OAuthStatePayload = {
 	nonce: string;
 	organizationId?: string;
+	accountLabel?: string;
 };
 
 @Controller('social')
@@ -41,6 +42,7 @@ export class SocialController {
 			return {
 				nonce: String((parsed as any).nonce || ''),
 				organizationId: (parsed as any).organizationId ? String((parsed as any).organizationId) : undefined,
+				accountLabel: (parsed as any).accountLabel ? String((parsed as any).accountLabel) : undefined,
 			};
 		} catch {
 			return { nonce: String(state || '') };
@@ -53,6 +55,16 @@ export class SocialController {
 		if (direct?.nonce) {
 			const nested = this.decodeState(direct.nonce);
 			if (nested?.organizationId) return nested.organizationId;
+		}
+		return undefined;
+	}
+
+	private extractAccountLabel(state?: string) {
+		const direct = this.decodeState(state);
+		if (direct?.accountLabel) return direct.accountLabel;
+		if (direct?.nonce) {
+			const nested = this.decodeState(direct.nonce);
+			if (nested?.accountLabel) return nested.accountLabel;
 		}
 		return undefined;
 	}
@@ -74,8 +86,8 @@ export class SocialController {
 	}
 
 	@Get('connect/twitter')
-	async connectTwitter(@Query('organizationId') organizationId: string, @Res() res) {
-		const state = this.encodeState({ nonce: `state_${Date.now()}`, organizationId });
+	async connectTwitter(@Query('organizationId') organizationId: string, @Query('accountLabel') accountLabel: string, @Res() res) {
+		const state = this.encodeState({ nonce: `state_${Date.now()}`, organizationId, accountLabel });
 		const url = await this.social.getTwitterOAuthUrl(state);
 		this.logger.log(`Redirecting to Twitter OAuth: ${url}`);
 		return res.redirect(url);
@@ -151,6 +163,7 @@ export class SocialController {
 		const frontend = this.config.get<string>('FRONTEND_URL') || 'http://localhost:6002';
 		this.logger.log(`Twitter callback received: ${JSON.stringify(query || {})}`);
 		const organizationId = this.extractOrganizationId(state);
+		const accountLabel = this.extractAccountLabel(state);
 
 		if (oauthError) {
 			const reason = encodeURIComponent(`${oauthError}${errorDescription ? `: ${errorDescription}` : ''}`);
@@ -163,7 +176,7 @@ export class SocialController {
 
 		try {
 			const result = await this.social.handleTwitterCallback(code, state);
-			const saved = await this.social.persistTwitterAccount(result.user, result.token, organizationId);
+			const saved = await this.social.persistTwitterAccount(result.user, result.token, organizationId, accountLabel);
 			this.logger.log(`Persisted Twitter account: ${saved ? 'ok' : 'none'}`);
 			return res.redirect(`${frontend}/?connected=twitter&success=${saved ? 1 : 0}`);
 		} catch (e) {
