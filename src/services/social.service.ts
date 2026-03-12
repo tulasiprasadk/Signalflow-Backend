@@ -159,7 +159,7 @@ export class SocialService {
 
 		// Use OpenID Connect profile scope and Sign In with LinkedIn (V2) API
 		// These are the most basic scopes that should be available to all apps
-		const scope = ['openid', 'profile', 'email', 'w_member_social', 'r_organization_admin', 'w_organization_social'].join(' ');
+		const scope = ['openid', 'profile', 'email', 'w_member_social'].join(' ');
 
 		return `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(
 			redirect,
